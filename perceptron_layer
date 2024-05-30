@@ -1,0 +1,24 @@
+import numpy  as np
+import pandas as pd
+
+class perceptron:
+    def __init__(self, num_inputs):
+        self.weights = np.random.randn(num_inputs)
+        self.bias = np.random.randn()
+        
+    def linear_activation(self, net):
+        return net
+    def predict(self, inputs):
+        weighted_sum = np.dot(inputs, self.weights) + self.bias
+        return self.linear_activation(weighted_sum)
+    def train(self, training_data, target, learning_rate=0.001, epochs =  100):
+        for epoch in range(epochs):
+            shuffled_indices = np.random.permutation(len(training_data))
+            training_data = training_data[shuffled_indices]
+
+            for data, target in zip(training_data, target):
+                output = self.predict(data)
+                error = target - output
+
+                self.weights = self.weights - learning_rate * -1 * 1 * data
+                self.bias = self.wbias + learning_rate * error * 1
